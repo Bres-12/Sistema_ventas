@@ -15,6 +15,8 @@ public class Main {
 
         registrarVentas(ventas, productos, turnos);
 
+        identificarMayor(ventas, productos, turnos);
+
     }
 
     public static void registrarVentas(double[][] ventas, String[] productos, String[] turnos) {
@@ -26,6 +28,7 @@ public class Main {
             }
         }
     }
+    
 
     public static double validarDato() {
         double dato = 0;
@@ -42,5 +45,29 @@ public class Main {
             }
             return dato;
         }
+    }
+
+    public static void identificarMayor(double[][] ventas,
+                                        String[] productos,
+                                        String[] turnos) {
+
+        double mayor = ventas[0][0];
+        int fila = 0;
+        int columna = 0;
+
+        for (int i = 0; i < ventas.length; i++) {
+            for (int j = 0; j < ventas[i].length; j++) {
+
+                if (ventas[i][j] > mayor) {
+                    mayor = ventas[i][j];
+                    fila = i;
+                    columna = j;
+                }
+            }
+        }
+
+        System.out.println("La venta mayor fue de: $" + mayor);
+        System.out.println("Producto: " + productos[fila]);
+        System.out.println("Turno: " + turnos[columna]);
     }
 }
